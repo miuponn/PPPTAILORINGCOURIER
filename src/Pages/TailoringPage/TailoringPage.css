@@ -1,4 +1,4 @@
-.product-page {
+.services-page {
     width: 100%;
     min-height: 100vh;
     flex-direction: column;
@@ -6,9 +6,13 @@
     display: flex;
    /* border: 1px solid #ccc; */
    overflow-x: hidden;
+   overflow-y: hidden;
+   font:inherit;
+   letter-spacing: 2px;
 }
 
-.product-list {
+
+.services-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 2rem;
@@ -18,4 +22,12 @@
     width: 100%;
     overflow-x: clip;
     box-sizing: border-box;
+}
+
+.services-container {
+    margin-left: 50px;
+}
+
+.services-container .services-text {
+    margin-left: 30px;
 }

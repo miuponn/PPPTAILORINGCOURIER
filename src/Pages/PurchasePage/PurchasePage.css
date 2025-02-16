@@ -1,0 +1,90 @@
+.purchase-page {
+    width: 100%;
+    min-height: 100vh;
+    margin-top: 60px;
+    display: flex;
+    flex-direction: row;
+    margin-top: 60px;
+    font: inherit;
+    letter-spacing: 2px;
+    flex-direction: column;
+}
+
+.purchase-content {
+    display: flex;
+    padding: 2rem;
+    gap: 2rem;
+    flex-direction: row;
+}
+
+.purchase-left {
+    /*border: 2px  solid red; */
+    width: 40%;
+}
+
+.purchase-right {
+   /* border: 2px solid blue; */
+    width: 60%;
+    padding-top:15px;
+}
+.purchase-form {
+    flex: 1;
+    padding: 2rem;
+}
+
+p {
+    margin-top: 0;
+}
+
+.purchase-header {
+    margin-bottom: 0;
+    margin-left: 30px;
+}
+
+.purchase-form input {
+    width: 100%;
+    padding: 0.5rem 0;
+    margin-bottom: 1rem;
+    border: none;
+    border-bottom: 2px solid #000;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+    background: transparent;
+}
+
+.purchase-form {
+    width: 80%;
+    
+}
+.purchase-form input:focus {
+    border-bottom: 2px solid #666;
+}
+
+.purchase-form label {
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+}
+
+.purchase-summary {
+    flex: 1;
+    padding: 2rem;
+}
+
+.purchase-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 1rem;
+}
+
+.purchase-total {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 2px solid #000;
+}
+
+.purchase-text {
+    font-size: 12px;
+}

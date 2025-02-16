@@ -1,0 +1,45 @@
+.contact-location-page {
+    width: 100%;
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+}
+
+.contact-location-content {
+    width: 100%;
+    height: 100%;
+    display:flex;
+    flex-direction: row;
+}
+
+.contact-location-left {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.contact-location-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 80px;
+}
+
+.contact-mini-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.location-details {
+    margin-bottom: 1rem;
+}
+
+.contact-mini-div-text {
+    margin: 0.5rem 0;
+}

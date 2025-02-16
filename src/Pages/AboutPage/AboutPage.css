@@ -1,0 +1,75 @@
+.about-page-controls {
+    width: 100%;
+    height: 300px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 0;
+    padding: 0;
+    padding-top: 0;
+    justify-items: center;
+    align-items: center;
+    /*border: 2px solid black; */
+    flex-direction: row;
+}
+
+.about-page-mini {
+    margin-top: 0;
+    width: 400px;
+    height: 200px;
+    /*border: 2px solid pink; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+}
+
+.about-page {
+    width: 100%;
+    height: 100%;
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.about-page-header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.about-page-content {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    /*border: 2px solid black; */
+    overflow-y: hidden;
+    padding-bottom: 0;
+    margin:0;
+
+}
+
+.about-page-text {
+    width: 60%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+    text-align: center;
+}
+
+.about-page-point {
+    font: inherit;
+    text-decoration: none;
+    letter-spacing: 2px;
+    font-size: 16px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}

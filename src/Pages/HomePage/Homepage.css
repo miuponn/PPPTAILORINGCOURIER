@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+.homepage {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    margin-top:60px;
+    font: 'Inter', sans-serif;
+    letter-spacing: 2px;
+}
+
+h1, p {
+    font: 'Inter', sans-serif;
+    letter-spacing: 2px;
+}
+
+.homepage-content {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    font: 'Inter', sans-serif;
+}
+.homepage-content-left {
+    height: 100vh;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   /* border: 2px solid red; */
+    font: 'Inter', sans-serif;
+}
+
+.homepage-content-right {
+    height: 100vh;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    padding-top: 0;
+   /* border: 2px solid green;*/
+    flex-direction:column;
+    gap: 40px;
+}
+
+.homepage-content-right-text {
+    margin-top: 15%;
+   /* border: 2px solid yellow;*/
+    width: 80%;
+    font: 'Inter', sans-serif;
+    letter-spacing: 2px;
+}
+
+.home-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+
+.photo-container {
+    width: 80%;
+    height: 80vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.photo-controls {
+    position: static;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    width: 100%;
+}
+.homepage-content-left {
+    height: 100vh;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.homepage-buttons {
+    gap: 40px;
+    flex-direction: row;
+    display: flex;
+    width: 50%;
+    justify-content: center;
+    /*border: 2px solid blue;*/
+}

@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+.altbutton {
+    color: #000;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    letter-spacing: 2px;
+    /*border: 3px solid #000; */
+    position: relative;
+    background: transparent;
+    transition: color 0.3s ease;
+    z-index: 1;
+    border: none;
+    outline:none;
+}
+
+button.altbutton:focus {
+    outline:none;
+    border: none;
+}
+
+.altbutton::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: #000;
+    transition: width 0.3s ease;
+    z-index: -1;
+}
+
+.altbutton:hover {
+    color: #fff;
+}
+
+.altbutton:hover::before {
+    width: 100%;
+}
+
+.altbutton-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.altbutton:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.altbutton:active {
+    box-shadow: none;
+}
+
+.altbutton-small {
+    padding: 0.25rem 1rem;
+    font-size: 14px;
+}
+
+.altbutton-very-small {
+    padding: 0.25rem 0.5rem;
+    font-size: 12px;
+}
+
+.altbutton-medium {
+    padding: 0.5rem 1.5rem;
+    font-size: 18px;
+}
+
+.altbutton-large {
+    padding: 1rem 2rem;
+    font-size: 24px;
+}
+
+.altbutton-primary {
+    color: #000;
+    
+}
+
+.altbutton-primary:hover {
+    color: #fff;
+}
+
+.altbutton-secondary {
+    background-color: #000;
+    color: #fff;
+    border: 2px solid #000;
+    position: relative;
+    z-index: 1;
+}
+
+altbutton-secondary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: #fff;
+    transition: width 0.3s ease;
+    z-index: -1;
+}
+
+.altbutton-secondary:hover::before {
+    width: 100%;
+}
+
+.altbutton-secondary:hover {
+    color: #000;;
+}

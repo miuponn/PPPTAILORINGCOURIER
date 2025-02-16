@@ -9,6 +9,7 @@ import gif5 from './EntryGifs/forest1.gif';
 import logo from "./EntryGifs/PPPTAILORINGCOURIER.png";
 import slogan from "./EntryGifs/PPP-SLOGAN.png";
 import Button from '../../Components/Button/Button';
+import Symbol from './EntryGifs/ppp-logo-white.png';
 function EntryPage() {
     const [currentImage, setCurrentImage] = useState(1);
 
@@ -44,6 +45,7 @@ function EntryPage() {
                     ></img>
                 <div className="entry-content">
                     <img alt="ppptailoringcourier" className="entry-logo" src={logo}></img>
+                    <img alt="ppp-logo" className="entry-symbol" src={Symbol}></img>
                     <img alt="ppp-slogan" className="entry-slogan" src={slogan}></img>
                     <div className="button-wrapper">
                         <Button 

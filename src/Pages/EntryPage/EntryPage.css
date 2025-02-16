@@ -46,3 +46,13 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+
+.entry-symbol {
+    position: fixed;
+    z-index: 0;
+    top: 25%;
+    left: 50%;
+    transform: scale(0.5) translate(-100%, -100%);
+    filter: blur(1px);
+}
