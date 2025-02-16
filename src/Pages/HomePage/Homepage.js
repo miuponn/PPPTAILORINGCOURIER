@@ -83,8 +83,8 @@ function Homepage() {
                         <p>BASED FROM THE URBAN STREETS OF SOUTH KOREA, WE ENSURE THAT ALL SERVICES AND PRODUCTS ARE OF THE HIGHEST QUALITY.</p>
                     </div>
                     <div className="homepage-buttons">
-                        <AltButton path="/products" type="secondary" size="small" className="homepage-button">SHOP PRODUCTS</AltButton>
-                        <AltButton path="/services" type="secondary" size="small" className="homepage-button">SHOP SERVICES</AltButton>
+                        <Button path="/products" type="secondary" size="small" className="homepage-button">SHOP PRODUCTS</Button>
+                        <Button path="/services" type="secondary" size="small" className="homepage-button">SHOP SERVICES</Button>
                     </div>
                 </div>
             </div>
