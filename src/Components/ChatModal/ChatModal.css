@@ -1,0 +1,134 @@
+.chat-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chat-modal {
+  position: relative;
+  width: 90vw;
+  max-width: 1000px; 
+  height: 90vh;
+  background: #fff;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.chat-welcome {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 3rem;
+  padding-bottom: 1.5rem; /* reduced bottom padding */
+}
+
+.welcome-header {
+  font-family: 'Inter', sans-serif;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  font-size: clamp(24px, 4vw, 36px); 
+}
+
+.welcome-header span {
+  color: #909090;
+}
+
+.welcome-header strong {
+  color: #1D1D1D;
+}
+
+.welcome-subheader {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #1D1D1D;
+  margin-top: 0; /* remove top margin */
+  padding-bottom: 2rem;
+  font-size: clamp(14px, 2.7vw, 22px); /* increased font size */
+}
+
+.chat-cards-container,
+.chat-input-section {
+  width: 70%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.chat-content-container {
+  width: 70%;
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.chat-input-section {
+  padding: 15px;
+  margin-bottom: 4rem; /* increased bottom margin */
+}
+
+/* Add this class to style the chat messages container */
+.chat-messages-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+/* Modify input section bottom margin based on context */
+.chat-welcome + .chat-input-section {
+  margin-bottom: 4rem; /* More space when showing welcome screen */
+}
+
+.chat-messages-container + .chat-input-section {
+  margin-bottom: 2rem; /* Less space when in chat mode */
+}
+
+@media (max-width: 768px) {
+  .chat-welcome {
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+  }
+
+  .chat-cards-container,
+  .chat-input-section {
+    width: 85%;
+  }
+
+  .chat-cards-container {
+    gap: 12px; /* reduced gap on mobile */
+  }
+
+  .chat-input-section {
+    margin-bottom: 1.5rem; /* Slightly less margin on mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .chat-cards-container,
+  .chat-input-section {
+    width: 90%;
+  }
+
+  .chat-cards-container {
+    gap: 8px; /* further reduced gap on smaller screens */
+  }
+}
+
+
+

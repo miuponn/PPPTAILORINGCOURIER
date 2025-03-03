@@ -8,7 +8,7 @@ import gif4 from './EntryGifs/snow-mountain2.gif';
 import gif5 from './EntryGifs/forest1.gif';
 import logo from "./EntryGifs/PPPTAILORINGCOURIER.png";
 import slogan from "./EntryGifs/PPP-SLOGAN.png";
-import Button from '../../Components/Button/Button';
+import Button from '../../components/Button/Button';
 import Symbol from './EntryGifs/ppp-logo-white.png';
 function EntryPage() {
     const [currentImage, setCurrentImage] = useState(1);

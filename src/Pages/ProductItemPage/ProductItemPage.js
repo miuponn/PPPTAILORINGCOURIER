@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './ProductItemPage.css';
 import {useLocation, useParams, useNavigate} from 'react-router-dom';
-import AltButton from '../../Components/AltButton/AltButton';  
-import Button from '../../Components/Button/Button';
-import Header from '../../Components/Header/Header';
+import AltButton from '../../components/AltButton/AltButton';  
+import Button from '../../components/Button/Button';
+import Header from '../../components/Header/Header';
 
 function ProductItemPage() {
 

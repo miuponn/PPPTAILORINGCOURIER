@@ -1,0 +1,42 @@
+.chat-nav {
+  display: flex;
+  justify-content: flex-end;
+  padding: 24px 32px; 
+  background: transparent;
+  height: 80px; 
+  box-sizing: border-box;
+}
+
+.exit-button {
+  background: transparent;
+  padding-left: 2px; 
+}
+
+.chat-nav-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid #E9E9E9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.chat-nav-button img {
+  max-width: 16px;
+  width: 50%;
+  height: auto;
+}
+
+.chat-nav-button:hover {
+  background-color: #E9E9E9;
+  transform: scale(1.05);
+}
+
+.chat-nav-button:active {
+  transform: scale(0.95);
+}

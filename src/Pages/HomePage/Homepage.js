@@ -2,8 +2,8 @@ import React from 'react';
 import {useState, useEffect} from 'react';
 import {link} from 'react-router-dom';
 import './Homepage.css';
-import Header from '../../Components/Header/Header.js';
-import AltButton from '../../Components/AltButton/AltButton.js';
+import Header from '../../components/Header/Header.js';
+import AltButton from '../../components/AltButton/AltButton.js';
 import fff1 from './introPhotos/fff1.jpg';
 import fff2 from './introPhotos/fff2.jpg';
 import fff3 from './introPhotos/fff3.jpg';
@@ -22,7 +22,7 @@ import fff15 from './introPhotos/fff15.jpg';
 import fff16 from './introPhotos/fff16.jpg';
 import fff17 from './introPhotos/fff17.jpg';
 import fff18 from './introPhotos/fff18.jpg';
-import Button from '../../Components/Button/Button.js';
+import Button from '../../components/Button/Button.js';
 
 function Homepage() {
 

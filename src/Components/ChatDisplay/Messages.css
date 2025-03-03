@@ -1,0 +1,36 @@
+.message {
+    font: 'Inter', sans-serif;
+    display: flex;
+    align-items: center;
+    max-width: 75%;
+    padding: 10px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.message.user {
+    background: #F3F3F3; 
+    color: #000; 
+    align-self: flex-end; 
+    text-align: left;
+    border-radius: 20px; 
+}
+
+.message.kit {
+    background-color: transparent; 
+    color: #000; 
+    align-self: flex-start; 
+    text-align: left;
+    border-radius: 20px; 
+}
+
+.kit-icon {
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+}
+
+.kit-content {
+    flex: 1;
+}

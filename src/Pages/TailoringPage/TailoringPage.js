@@ -1,8 +1,8 @@
 import React from 'react';
 import './TailoringPage.css';
 import {Link} from 'react-router-dom';
-import Header from '../../Components/Header/Header';
-import ProductListItem from '../../Components/ProductListItem/ProductListItem';
+import Header from '../../components/Header/Header';
+import ProductListItem from '../../components/ProductListItem/ProductListItem';
 import photo1 from './servicephotos/ppp-service1.jpg';
 import photo2 from './servicephotos/ppp-service2.jpg';
 import photo3 from './servicephotos/ppp-service3.jpg';

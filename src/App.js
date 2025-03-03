@@ -11,11 +11,11 @@ import TailoringPage from './Pages/TailoringPage/TailoringPage';
 import AboutPage from './Pages/AboutPage/AboutPage';
 import ContactLocationPage from './Pages/ContactLocationPage/ContactLocationPage';
 import ProfilePage from './Pages/ProfilePage/ProfilePage';
-
+import ChatWidget from './components/ChatWidget/ChatWidget';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/PPPTAILORINGCOURIER">
       <Routes>
           <Route path="/" element={<EntryPage />} />
           <Route path="/home" element={<HomePage />}/>
@@ -28,9 +28,9 @@ function App() {
           <Route path="/contact+location" element={<ContactLocationPage />} />
           <Route path="/profile" element={<ProfilePage />} />
       </Routes>
+      <ChatWidget />
     </BrowserRouter>
   );
 }
 
 export default App;
- 

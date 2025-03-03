@@ -1,7 +1,7 @@
 import React from 'react';
 import './AboutPage.css';
-import Button from '../../Components/Button/Button';
-import Header from '../../Components/Header/Header';
+import Button from '../../components/Button/Button';
+import Header from '../../components/Header/Header';
 function AboutPage() {
     return(
         <div className="about-page">

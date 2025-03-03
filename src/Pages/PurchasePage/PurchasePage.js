@@ -1,10 +1,10 @@
 import React from 'react';
 import './PurchasePage.css';
 import {useState} from 'react';
-import Header from '../../Components/Header/Header';
-import Button from '../../Components/Button/Button';
+import Header from '../../components/Header/Header';
+import Button from '../../components/Button/Button';
 import {useLocation, useNavigate} from 'react-router-dom';
-import ProductMiniItemPage from '../../Components/ProductMiniItem/ProductMiniItem';
+import ProductMiniItemPage from '../../components/ProductMiniItem/ProductMiniItem';
 function PurchasePage() {
 
     const location = useLocation();

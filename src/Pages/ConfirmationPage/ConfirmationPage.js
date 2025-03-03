@@ -1,8 +1,8 @@
 import React from 'react';
-import Button from '../../Components/Button/Button';
+import Button from '../../components/Button/Button';
 import './ConfirmationPage.css';
-import Header from '../../Components/Header/Header';
-import ProductMiniItem from '../../Components/ProductMiniItem/ProductMiniItem';
+import Header from '../../components/Header/Header';
+import ProductMiniItem from '../../components/ProductMiniItem/ProductMiniItem';
 import {useLocation, useNavigate} from 'react-router-dom';
 function ConfirmationPage() {
     
