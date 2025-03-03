@@ -1,4 +1,6 @@
+import React from 'react'
 import kitIcon from './kit.svg';
+import './Messages.css';
 
 const KitMessage = ({ content }) => (
   <div className="message kit">

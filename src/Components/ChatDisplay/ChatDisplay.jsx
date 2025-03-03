@@ -1,5 +1,7 @@
+import React from 'react';
 import UserMessage from './UserMessage';
 import KitMessage from './KitMessage';
+import './Messages.css';
 
 const ChatDisplay = ({ messages }) => (
   <div className="chat-messages">

@@ -3,19 +3,36 @@ import './ChatModal.css';
 import Navbar from '../ChatNav/Navbar';
 import ChatCards from '../ChatAutorecommend/ChatCards';
 import InputSection from '../ChatInput/InputSection';
-import ChatDisplay from '../ChatDisplay/ChatDisplay'; // Import the ChatDisplay component
+import ChatDisplay from '../ChatDisplay/ChatDisplay';
 
 const ChatModal = ({ onClose }) => {
-  const [message, setMessage] = useState('');
   const [chatHistory, setChatHistory] = useState([]);
 
-  const handleSubmit = (message) => {
-    if (!message.trim()) return;
-    setChatHistory([...chatHistory, { type: 'user', content: message }]);
+  const handleSendMessage = async (message) => {
+    const userMessage = { type: 'user', content: message };
+    setChatHistory([...chatHistory, userMessage]);
+
+    // Simulate sending message to Hugging Face API
+    const response = await fetchHuggingFaceResponse(message);
+    const botMessage = { type: 'kit', content: response };
+    setChatHistory((prevHistory) => [...prevHistory, botMessage]);
   };
 
-  const handleSelectPrompt = (prompt) => {
-    handleSubmit(prompt);
+  const fetchHuggingFaceResponse = async (message) => {
+    // Replace with actual Hugging Face API call
+    // const response = await fetch('https://api.huggingface.co/chat', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     'Authorization': `Bearer YOUR_API_KEY`
+    //   },
+    //   body: JSON.stringify({ message })
+    // });
+    // const data = await response.json();
+    // return data.reply;
+
+    // simulated response for now
+    return "This is a simulated response from KIT.";
   };
 
   return (
@@ -30,7 +47,7 @@ const ChatModal = ({ onClose }) => {
               <strong>KIT.</strong>
             </h2>
             <h3 className="welcome-subheader">WHAT'S YOUR VISION?</h3>
-            <ChatCards onSelectPrompt={handleSelectPrompt} />
+            <ChatCards onSelectPrompt={handleSendMessage} />
           </div>
         ) : (
           <div className="chat-messages-container">
@@ -38,7 +55,7 @@ const ChatModal = ({ onClose }) => {
           </div>
         )}
 
-        <InputSection onSendMessage={handleSubmit} />
+        <InputSection onSendMessage={handleSendMessage} />
       </div>
     </div>
   );

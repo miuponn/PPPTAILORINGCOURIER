@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './InputSection.css';
-import arrow from './arrow.svg'
+import arrow from './arrow.svg';
 
 const InputSection = ({ onSendMessage }) => {
   const [message, setMessage] = useState('');
