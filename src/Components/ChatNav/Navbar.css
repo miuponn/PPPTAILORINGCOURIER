@@ -1,15 +1,38 @@
 .chat-nav {
   display: flex;
-  justify-content: flex-end;
-  padding: 24px 32px; 
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 32px;
   background: transparent;
-  height: 80px; 
+  height: 80px;
   box-sizing: border-box;
+}
+
+.chat-nav-title {
+  display: flex;
+  align-items: baseline;
+}
+
+.chat-nav-name {
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: 20px;
+  letter-spacing: 0.03em;
+  color: #000000;
+  text-transform: uppercase;
+}
+
+.chat-nav-version {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  color: #9B9B9B;
+  margin-left: 5px;
 }
 
 .exit-button {
   background: transparent;
-  padding-left: 2px; 
+  padding-left: 2px;
 }
 
 .chat-nav-button {

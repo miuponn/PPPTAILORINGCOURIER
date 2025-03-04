@@ -1,5 +1,5 @@
 import React from 'react';
-import './ChatCard.css';
+import './ChatCards.css';
 
 const ChatCard = ({ prompts = [], onSelectPrompt }) => {
     // This will later fetch from Hugging Face API

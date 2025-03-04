@@ -1,0 +1,32 @@
+.suggested-responses-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.suggested-response-button {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 12px 16px;
+  font-family: 'Inter', sans-sserif;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.suggested-response-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.suggested-response-button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}

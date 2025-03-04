@@ -7,6 +7,8 @@
     border-radius: 20px;
     font-size: 14px;
     line-height: 1.4;
+    opacity: 0;
+    animation: fadeIn 0.3s forwards;
 }
 
 .message.user {
@@ -23,14 +25,166 @@
     align-self: flex-start; 
     text-align: left;
     border-radius: 20px; 
+    align-items: flex-start; 
 }
 
 .kit-icon {
-    width: 32px;
-    height: 32px;
+    width: 32px; 
+    height: 32px; 
+    padding-right: 20px;
+    align-self: flex-start;
+    margin-top: 2px;
     margin-right: 10px;
+}
+
+.kit-icon img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
 }
 
 .kit-content {
     flex: 1;
+    overflow: hidden;
+}
+
+.kit-content-line {
+    opacity: 0;
+    animation: lineReveal 0.5s forwards;
+}
+
+.message-image {
+  max-width: 250px;
+  max-height: 180px;
+  border-radius: 8px;
+  margin-top: 8px;
+  border: 1px solid #E3E3E3;
+  object-fit: cover;
+}
+
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  align-self: flex-start;
+  margin: 8px 0;
+  padding: 8px 16px;
+  background-color: transparent;
+}
+
+.message.kit .dots-container {
+  display: flex;
+  gap: 4px;
+  padding: 8px;
+  background-color: transparent;
+}
+
+.message.kit .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #333;
+  display: inline-block;
+}
+
+.message.kit .dot-1 {
+  animation: bounce 1.2s infinite ease-in-out 0s;
+}
+
+.message.kit .dot-2 {
+  animation: bounce 1.2s infinite ease-in-out 0.2s;
+}
+
+.message.kit .dot-3 {
+  animation: bounce 1.2s infinite ease-in-out 0.4s;
+}
+
+.dots-container {
+  display: flex;
+  gap: 4px;
+  padding: 8px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #333; 
+  display: inline-block;
+}
+
+.dot-1 {
+  animation: bounce 1.2s infinite ease-in-out 0s;
+}
+
+.dot-2 {
+  animation: bounce 1.2s infinite ease-in-out 0.2s;
+}
+
+.dot-3 {
+  animation: bounce 1.2s infinite ease-in-out 0.4s;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+    background-color: #ccc;
+  }
+  50% {
+    transform: translateY(-6px);
+    background-color: #333;
+  }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes lineReveal {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.chat-messages {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0; /* Important for scroll to work in flex container */
+  justify-content: flex-end;
+  margin-bottom: 12px;
+  overflow-y: auto; /* This enables the scrollbar */
+  padding-right: 12px;
+  scroll-behavior: smooth;
+  position: relative; /* Ensure position context */
+  width: 100%; /* Make sure it fills the container width */
+  max-height: 100%; /* Ensure it doesn't exceed container height */
+}
+
+.chat-messages-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* Allow scrolling */
+  padding: 20px;
+  width: 70%;
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative; /* Ensure position context */
+}
+
+.chat-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+    background: #f9f9f9;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+    background: #E3E3E3;
+    border-radius: 3px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb:hover {
+    background: #383838;
 }

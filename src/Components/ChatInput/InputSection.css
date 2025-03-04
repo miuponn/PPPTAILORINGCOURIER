@@ -54,7 +54,7 @@
 }
 
 .chat-attach-photo {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 6px;
   font-size: 12px;
@@ -62,8 +62,72 @@
   cursor: pointer;
   font-family: 'Inter', sans-serif;
   letter-spacing: 1px;
+  padding: 4px 12px;
+  position: relative;
+  transition: color 0.3s ease;
+  z-index: 1;
+  align-self: flex-start;
+  width: auto; 
+}
+
+.chat-attach-photo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: #000;
+  transition: width 0.3s ease;
+  z-index: -1;
+}
+
+.chat-attach-photo:hover {
+  color: #fff;
+}
+
+.chat-attach-photo:hover::before {
+  width: 100%;
+}
+
+.chat-attach-photo:hover svg path {
+  stroke: #fff;
+  transition: stroke 0.3s ease;
 }
 
 .chat-attach-photo svg {
   margin-top: 2px;
+}
+
+.image-preview {
+  position: relative;
+  margin-bottom: 10px;
+  max-width: 250px; 
+  max-height: 180px;
+  overflow: hidden;
+}
+
+.image-preview img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid #E3E3E3;
+  object-fit: cover; 
+}
+
+.remove-image {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: #000;
+  color: #fff;
+  border: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

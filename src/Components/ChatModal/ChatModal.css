@@ -21,6 +21,9 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  animation: scaleIn 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  transform: scale(0.9);
+  opacity: 0;
 }
 
 .chat-welcome {
@@ -40,6 +43,8 @@
   font-weight: 800;
   letter-spacing: 0.03em;
   font-size: clamp(24px, 4vw, 36px); 
+  animation: slideDown 0.6s forwards;
+  opacity: 0;
 }
 
 .welcome-header span {
@@ -58,6 +63,8 @@
   margin-top: 0; 
   padding-bottom: 2rem;
   font-size: clamp(14px, 2.7vw, 22px); 
+  animation: slideDown 0.6s forwards 0.2s;
+  opacity: 0;
 }
 
 .chat-cards-container,
@@ -65,6 +72,11 @@
   width: 70%;
   max-width: 700px;
   margin: 0 auto;
+}
+
+.chat-cards-container {
+  animation: fadeUp 0.8s forwards 0.4s;
+  opacity: 0;
 }
 
 .chat-content-container {
@@ -79,21 +91,30 @@
 .chat-input-section {
   padding: 15px;
   margin-bottom: 4rem; 
+  animation: fadeUp 0.6s forwards 0.6s;
+  opacity: 0;
 }
+
 .chat-messages-container {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
+  height: 100%;
+  max-height: calc(90vh - 200px);
   padding: 20px;
+  width: 70%;
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
 }
 
 .chat-welcome + .chat-input-section {
-  margin-bottom: 4rem; /* More space when showing welcome screen */
+  margin-bottom: 4rem;
 }
 
 .chat-messages-container + .chat-input-section {
-  margin-bottom: 2rem; /* Less space when in chat mode */
+  margin-bottom: 2rem; 
 }
 
 @media (max-width: 768px) {
@@ -108,11 +129,11 @@
   }
 
   .chat-cards-container {
-    gap: 12px; /* reduced gap on mobile */
+    gap: 12px;
   }
 
   .chat-input-section {
-    margin-bottom: 1.5rem; /* slightly less margin on mobile */
+    margin-bottom: 1.5rem;
   }
 }
 
@@ -124,6 +145,44 @@
 
   .chat-cards-container {
     gap: 8px;
+  }
+}
+
+@keyframes slideDown {
+  from { 
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeUp {
+  from { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { 
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to { 
+    transform: scale(1);
+    opacity: 1;
   }
 }
 
