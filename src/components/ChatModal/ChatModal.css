@@ -89,7 +89,7 @@
 }
 
 .chat-input-section {
-  padding: 15px;
+  padding: 0 15px 15px 15px;
   margin-bottom: 4rem; 
   animation: fadeUp 0.6s forwards 0.6s;
   opacity: 0;
@@ -117,11 +117,26 @@
   margin-bottom: 2rem; 
 }
 
-@media (max-width: 768px) {
+/* Add this new class for the suggested responses wrapper */he suggested responses wrapper */
+.suggested-responses-wrapper {ses-wrapper {
+  margin: 0 auto;  /* Remove any default margins */Remove any default margins */
+  padding: 0 20px;
+  width: 70%;idth: 70%;
+  max-width: 700px;  max-width: 700px;
+  margin-bottom: 0;  /* Explicitly remove bottom margin */Explicitly remove bottom margin */
+}
+
+/* Update the chat-input-section to have top margin when it follows suggested responses */Update the chat-input-section to have top margin when it follows suggested responses */
+.suggested-responses-wrapper + .chat-input-section {.suggested-responses-wrapper + .chat-input-section {
+  margin-top: 12px;  /* Add space above the input section instead */dd space above the input section instead */
+  padding-top: 0;    /* Remove top padding from input section */ 0;    /* Remove top padding from input section */
+}
+
+@media (max-width: 768px) {x) {
   .chat-welcome {
-    padding-top: 2rem;
-    padding-bottom: 1rem;
-  }
+    padding-top: 2rem; padding-top: 2rem;
+    padding-bottom: 1rem;   padding-bottom: 1rem;
+  }  }
 
   .chat-cards-container,
   .chat-input-section {
@@ -129,52 +144,67 @@
   }
 
   .chat-cards-container {
-    gap: 12px;
+    gap: 12px;;
   }
 
-  .chat-input-section {
-    margin-bottom: 1.5rem;
+  .chat-input-section {  .chat-input-section {
+    margin-bottom: 1.5rem;rem;
   }
 }
 
-@media (max-width: 480px) {
-  .chat-cards-container,
-  .chat-input-section {
+@media (max-width: 480px) {dia (max-width: 480px) {
+  .chat-cards-container,-cards-container,
+  .chat-input-section {ection {
     width: 90%;
   }
 
-  .chat-cards-container {
+  .chat-cards-container {  .chat-cards-container {
     gap: 8px;
   }
 }
 
-@keyframes slideDown {
-  from { 
+@keyframes slideDown {yframes slideDown {
+  from { { 
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(-20px);px);
   }
-  to { 
-    opacity: 1;
-    transform: translateY(0);
+  to {  to { 
+    opacity: 1;    opacity: 1;
+    transform: translateY(0);slateY(0);
   }
 }
 
-@keyframes fadeUp {
+@keyframes fadeUp {@keyframes fadeUp {
   from { 
-    opacity: 0;
-    transform: translateY(20px);
+    opacity: 0;ty: 0;
+    transform: translateY(20px);20px);
   }
-  to { 
-    opacity: 1;
-    transform: translateY(0);
+  to { o { 
+    opacity: 1;city: 1;
+    transform: translateY(0);Y(0);
   }
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
+@keyframes fadeIn {@keyframes fadeIn {
+  from { opacity: 0; }  from { opacity: 0; }
+  to { opacity: 1; }  to { opacity: 1; }
+}}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}  }    opacity: 1;    transform: scale(1);  to {   }    opacity: 0;    transform: scale(0.9);  from { @keyframes scaleIn {
 @keyframes scaleIn {
   from { 
     transform: scale(0.9);
