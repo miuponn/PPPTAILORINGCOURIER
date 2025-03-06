@@ -1,21 +1,19 @@
 import React from 'react';
 import './SuggestedResponses.css';
 
-const SuggestedResponses = ({ suggestions = [], onSelectSuggestion }) => {
-  // Limit to 3 max suggestions
-  const displaySuggestions = suggestions.slice(0, 3);
-
-  if (displaySuggestions.length === 0) return null;
+const SuggestedResponses = ({ suggestions, onSelectSuggestion }) => {
+  // Make sure we have valid suggestions
+  const displaySuggestions = Array.isArray(suggestions) ? suggestions : [];
 
   return (
     <div className="suggested-responses-container">
       {displaySuggestions.map((suggestion, index) => (
-        <button 
-          key={index} 
+        <button
+          key={index}
           className="suggested-response-button"
           onClick={() => onSelectSuggestion(suggestion)}
         >
-          {suggestion.toUpperCase()}
+          {suggestion}
         </button>
       ))}
     </div>
