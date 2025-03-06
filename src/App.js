@@ -38,7 +38,7 @@ const AppContent = () => {
 
 function App() {
   return (
-    <BrowserRouter basename="/PPPTAILORINGCOURIER">
+    <BrowserRouter>
       <AppContent />
     </BrowserRouter>
   );
