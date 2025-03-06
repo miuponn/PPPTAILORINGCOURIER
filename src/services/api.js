@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://3.129.250.224"; 
+const API_BASE_URL = ""; 
 /**
  * Fetches starter prompts for chat cards
  * @returns {Promise<string[]>} Array of prompt strings
