@@ -30,6 +30,16 @@ const AppContent = () => {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact+location" element={<ContactLocationPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        
+        {/* routes for ChatModal */}
+        <Route path="/kit" element={<HomePage />} />
+        <Route path="/home/kit" element={<HomePage />} />
+        <Route path="/products/kit" element={<ProductPage />} />
+        <Route path="/product/:id/kit" element={<ProductItemPage />} />
+        <Route path="/services/kit" element={<TailoringPage />} />
+        <Route path="/about/kit" element={<AboutPage />} />
+        <Route path="/contact+location/kit" element={<ContactLocationPage />} />
+        <Route path="/profile/kit" element={<ProfilePage />} />
       </Routes>
       {!isEntryPage && <ChatWidget />}
     </>
