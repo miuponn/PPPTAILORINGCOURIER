@@ -5,17 +5,6 @@ import './Messages.css';
 const KitMessage = ({ content, isTyping }) => {
   const [lines, setLines] = useState([]);
   
-  // function to convert only Markdown links to HTML
-  const convertLinksToHtml = (text) => {
-    if (!text) return '';
-    
-    // regex to match Markdown links [text](url)
-    const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
-    
-    // replace Markdown links with HTML anchor tags
-    return text.replace(linkRegex, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
-  };
-
   useEffect(() => {
     if (content && !isTyping) {
       // reset lines first to prevent duplication
@@ -23,7 +12,7 @@ const KitMessage = ({ content, isTyping }) => {
       
       const contentLines = content.split('\n');
       
-      // use single timeout and update all at once to avoid duplication
+      // use  single timeout and update all at once to avoid duplication
       contentLines.forEach((line, i) => {
         setTimeout(() => {
           setLines(prev => {
@@ -57,11 +46,7 @@ const KitMessage = ({ content, isTyping }) => {
               className="kit-content-line"
               style={{animationDelay: `${index * 0.3}s`}}
             >
-              {line ? (
-                <p dangerouslySetInnerHTML={{ __html: convertLinksToHtml(line) }} />
-              ) : (
-                <br />
-              )}
+              {line || <br/>}
             </div>
           ))}
         </div>

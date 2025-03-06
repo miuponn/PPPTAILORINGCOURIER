@@ -28,18 +28,6 @@
     align-items: flex-start; 
 }
 
-.message.kit a {
-  color: #0066cc;
-  text-decoration: underline;
-  cursor: pointer;
-  transition: color 0.2s;
-}
-
-.message.kit a:hover {
-  color: #004080;
-  text-decoration: underline;
-}
-
 .kit-icon {
     width: 32px; 
     height: 32px; 
