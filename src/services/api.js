@@ -1,4 +1,5 @@
-const API_BASE_URL = ""; 
+const API_BASE_URL = ""; // Using relative URL for proxy support
+
 /**
  * Fetches starter prompts for chat cards
  * @returns {Promise<string[]>} Array of prompt strings
@@ -68,25 +69,43 @@ export async function sendMessage(message, imageFile = null, history = []) {
     throw new Error(`API request failed with status ${response.status}`);
   }
   
-  return await response.json();
+  const responseData = await response.json();
+  
+  // Ensure we have a properly formatted response even if the server returns fewer suggestions
+  return {
+    text: responseData.text,
+    suggestedResponses: responseData.suggestedResponses || []
+  };
 }
 
 /**
  * Fetches suggested responses based on a message and reply
+ * @param {string} message - User message
  * @param {string} botReply - Bot's reply
- * @param {string} [message] - Optional user message
+ * @param {Array} [history] - Optional chat history
  * @returns {Promise<string[]>} Array of suggested responses
  */
-export async function fetchSuggestedResponses(botReply, message = "") {
+export async function fetchSuggestedResponses(message, botReply, history = []) {
   try {
-    const response = await fetch(`${API_BASE_URL}/api/suggestions?bot_reply=${encodeURIComponent(botReply)}&message=${encodeURIComponent(message)}`);
+    // parameter order to match backend API expectation
+    const response = await fetch(`${API_BASE_URL}/api/suggested-responses`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        message,
+        bot_reply: botReply,
+        history
+      })
+    });
     
     if (!response.ok) {
       throw new Error(`API request failed with status ${response.status}`);
     }
     
     const data = await response.json();
-    return data.suggestions || [];
+    return data.suggestedResponses || [];
   } catch (error) {
     console.error('Error fetching suggested responses:', error);
     return ["Tell me more", "Other options?", "Different topic"];
@@ -100,8 +119,13 @@ export async function fetchSuggestedResponses(botReply, message = "") {
 export async function checkHealth() {
   try {
     const response = await fetch(`${API_BASE_URL}/api/health`);
+    
+    if (!response.ok) {
+      return false;
+    }
+    
     const data = await response.json();
-    return data.status === 'healthy';
+    return data.status === "healthy";
   } catch (error) {
     console.error('Health check failed:', error);
     return false;
