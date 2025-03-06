@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import ReactMarkdown from 'react-markdown';
 import kitIcon from './kit.svg';
 import './Messages.css';
 
@@ -12,7 +13,7 @@ const KitMessage = ({ content, isTyping }) => {
       
       const contentLines = content.split('\n');
       
-      // use  single timeout and update all at once to avoid duplication
+      // use single timeout and update all at once to avoid duplication
       contentLines.forEach((line, i) => {
         setTimeout(() => {
           setLines(prev => {
@@ -46,7 +47,7 @@ const KitMessage = ({ content, isTyping }) => {
               className="kit-content-line"
               style={{animationDelay: `${index * 0.3}s`}}
             >
-              {line || <br/>}
+              {line ? <ReactMarkdown>{line}</ReactMarkdown> : <br/>}
             </div>
           ))}
         </div>
