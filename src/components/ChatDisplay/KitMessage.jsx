@@ -1,11 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import ReactMarkdown from 'react-markdown';
 import kitIcon from './kit.svg';
 import './Messages.css';
 
 const KitMessage = ({ content, isTyping }) => {
   const [lines, setLines] = useState([]);
   
+  // function to convert only Markdown links to HTML
+  const convertLinksToHtml = (text) => {
+    if (!text) return '';
+    
+    // regex to match Markdown links [text](url)
+    const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
+    
+    // replace Markdown links with HTML anchor tags
+    return text.replace(linkRegex, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+  };
+
   useEffect(() => {
     if (content && !isTyping) {
       // reset lines first to prevent duplication
@@ -47,7 +57,11 @@ const KitMessage = ({ content, isTyping }) => {
               className="kit-content-line"
               style={{animationDelay: `${index * 0.3}s`}}
             >
-              {line ? <ReactMarkdown>{line}</ReactMarkdown> : <br/>}
+              {line ? (
+                <p dangerouslySetInnerHTML={{ __html: convertLinksToHtml(line) }} />
+              ) : (
+                <br />
+              )}
             </div>
           ))}
         </div>
