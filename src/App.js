@@ -15,7 +15,7 @@ import ChatWidget from './components/ChatWidget/ChatWidget';
 
 const AppContent = () => {
   const location = useLocation();
-  const isEntryPage = location.pathname === "/" || location.pathname === "/PPPTAILORINGCOURIER/";
+  const isEntryPage = location.pathname === "/";
   
   return (
     <>
