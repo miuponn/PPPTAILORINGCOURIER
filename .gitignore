@@ -26,3 +26,6 @@ yarn-error.log*
 
 # Case sensitivity helper
 *[Cc]omponents*
+
+# Bot backend code
+/bot/
