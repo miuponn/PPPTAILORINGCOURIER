@@ -73,27 +73,20 @@ export async function sendMessage(message, imageFile = null, history = []) {
 
 /**
  * Fetches suggested responses based on a message and reply
- * @param {string} message - User message
  * @param {string} botReply - Bot's reply
- * @param {Array} history - Optional chat history
+ * @param {string} [message] - Optional user message
  * @returns {Promise<string[]>} Array of suggested responses
  */
-export async function fetchSuggestedResponses(message, botReply, history = []) {
+export async function fetchSuggestedResponses(botReply, message = "") {
   try {
-    const response = await fetch(`${API_BASE_URL}/api/suggested-responses`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ message, bot_reply: botReply, history })
-    });
+    const response = await fetch(`${API_BASE_URL}/api/suggestions?bot_reply=${encodeURIComponent(botReply)}&message=${encodeURIComponent(message)}`);
     
     if (!response.ok) {
       throw new Error(`API request failed with status ${response.status}`);
     }
     
     const data = await response.json();
-    return data.suggestedResponses || [];
+    return data.suggestions || [];
   } catch (error) {
     console.error('Error fetching suggested responses:', error);
     return ["Tell me more", "Other options?", "Different topic"];

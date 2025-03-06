@@ -110,19 +110,21 @@ const ChatModal = ({ onClose }) => {
             <ChatCards onSelectPrompt={handleSendMessage} />
           </div>
         ) : (
-          <div className="chat-messages-container">
-            <ChatDisplay messages={chatHistory} />
-            {isTyping ? (
-              <KitMessage isTyping={true} />
-            ) : (
-              suggestedResponses.length > 0 && (
+          <>
+            <div className="chat-messages-container">
+              <ChatDisplay messages={chatHistory} />
+              {isTyping && <KitMessage isTyping={true} />}
+            </div>
+            
+            {!isTyping && suggestedResponses.length > 0 && (
+              <div className="suggested-responses-wrapper">
                 <SuggestedResponses 
                   suggestions={suggestedResponses} 
                   onSelectSuggestion={handleSendMessage}
                 />
-              )
+              </div>
             )}
-          </div>
+          </>
         )}
 
         <InputSection 
