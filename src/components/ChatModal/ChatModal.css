@@ -22,8 +22,6 @@
   flex-direction: column;
   overflow: hidden;
   animation: scaleIn 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-  transform: scale(0.9);
-  opacity: 0;
 }
 
 .chat-welcome {
@@ -88,25 +86,51 @@
   flex-grow: 1;
 }
 
+/* Fix chat input positioning */
 .chat-input-section {
-  padding: 0 15px 15px 15px; 
-  margin-bottom: 4rem; 
-  animation: fadeUp 0.6s forwards 0.6s;
-  opacity: 0;
+  flex: 0 0 auto; /* Don't grow or shrink */
+  padding: 15px;
+  width: 70%;
+  max-width: 700px;
+  margin: 0 auto 15px auto; /* More reasonable bottom margin */
 }
 
 .chat-messages-container {
-  flex-grow: 1;
+  flex: 1 0 auto; /* Change to 1 0 auto to prevent shrinking */
   display: flex;
   flex-direction: column;
-  height: 100%;
-  max-height: calc(90vh - 200px);
+  height: 0; /* Let flex control height instead */
+  min-height: 200px; /* Add minimum height */
+  max-height: calc(90vh - 300px); /* Adjust calculation */
   padding: 20px;
   width: 70%;
   max-width: 700px;
   margin: 0 auto;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: scroll !important; /* Make this the scrollable container */
+  scrollbar-width: thin;
+  scrollbar-color: #E3E3E3 #f9f9f9;
+}
+
+/* Add styles for the scrollbar */
+.chat-messages-container::-webkit-scrollbar {
+  width: 8px;
+  display: block !important;
+}
+
+.chat-messages-container::-webkit-scrollbar-track {
+  background: #f9f9f9;
+  border-radius: 3px;
+}
+
+.chat-messages-container::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+  border-radius: 3px;
+}
+
+.chat-messages-container::-webkit-scrollbar-thumb:hover {
+  background: #888;
 }
 
 .chat-welcome + .chat-input-section {
@@ -184,6 +208,15 @@
     transform: scale(1);
     opacity: 1;
   }
+}
+
+/* Ensure the suggested responses don't push other elements */
+.suggested-responses-wrapper {
+  flex: 0 0 auto; /* Don't grow or shrink */
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 70%;
+  max-width: 700px;
 }
 
 .suggested-responses-wrapper {

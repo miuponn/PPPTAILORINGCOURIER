@@ -99,6 +99,11 @@
   margin-top: 2px;
 }
 
+.chat-attach-photo.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .image-preview {
   position: relative;
   margin-bottom: 10px;

@@ -26,12 +26,36 @@ const ChatModal = ({ onClose }) => {
     
     checkApiHealth();
   }, []);
+  
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+        e.preventDefault();
+        
+        // Target the chat-messages-container
+        const container = document.querySelector('.chat-messages-container');
+        if (container) {
+          const scrollAmount = e.key === 'ArrowUp' ? -50 : 50;
+          container.scrollBy({
+            top: scrollAmount,
+            behavior: 'smooth'
+          });
+        }
+      }
+    };
 
+    window.addEventListener('keydown', handleKeyDown, true);
+    
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown, true);
+    };
+  }, []);
+  
   /**
    * Handles sending messages to the KIT bot
    */
   const handleSendMessage = async (message, imageFile) => {
-    // Skip if message is empty
+    // Skip if message is empty and no image
     if (!message.trim() && !imageFile) return;
     
     // Create user message and add to chat history
@@ -52,9 +76,6 @@ const ChatModal = ({ onClose }) => {
       // Send message to API
       const responseData = await sendMessage(message, imageFile, chatHistory);
       
-      // Hide typing indicator
-      setIsTyping(false);
-      
       // Add bot response to chat history
       const botMessage = { 
         type: 'kit', 
@@ -69,21 +90,19 @@ const ChatModal = ({ onClose }) => {
         const suggestions = await fetchSuggestedResponses(message, responseData.text);
         setSuggestedResponses(suggestions);
       }
-      
     } catch (error) {
       console.error("Error sending message:", error);
-      setIsTyping(false);
       
-      // Add error message
-      const errorMessage = { 
-        type: 'kit', 
-        content: apiHealthy 
-          ? "I'm having trouble processing your request right now. Please try again."
-          : "I'm offline at the moment. Please try again later."
+      // Add error message to chat history
+      const errorMessage = {
+        type: 'kit',
+        content: "I'm having trouble connecting right now. Please try again in a moment."
       };
       setChatHistory(prev => [...prev, errorMessage]);
-      
       setSuggestedResponses(["Try again", "Different question", "Help"]);
+    } finally {
+      // Always hide typing indicator when done, regardless of success or error
+      setIsTyping(false);
     }
   };
 

@@ -1,4 +1,5 @@
-const API_BASE_URL = ""; // Using relative URL for proxy support
+const isProduction = window.location.hostname !== 'localhost';
+const API_BASE_URL = isProduction ? "" : ""; // Empty for both since we use proxies
 
 /**
  * Fetches starter prompts for chat cards
@@ -30,52 +31,79 @@ export async function fetchStarterPrompts() {
  * @returns {Promise<Object>} Bot response with suggested follow-ups
  */
 export async function sendMessage(message, imageFile = null, history = []) {
-  // Format chat history
-  const formattedHistory = history.map(msg => {
-    if (msg.type === 'user') {
-      return { role: 'user', content: msg.content };
-    } else {
-      return { role: 'assistant', content: msg.content };
-    }
-  });
-  
-  // Build request data
-  const requestData = {
-    message: message,
-    history: formattedHistory
-  };
-  
-  // Add image if present
-  if (imageFile) {
-    // Convert image to base64
-    const reader = new FileReader();
-    const imageBase64 = await new Promise((resolve) => {
-      reader.onloadend = () => resolve(reader.result);
-      reader.readAsDataURL(imageFile);
+  try {
+    // Format chat history
+    const formattedHistory = history.map(msg => {
+      if (msg.type === 'user') {
+        return { role: 'user', content: msg.content };
+      } else {
+        return { role: 'assistant', content: msg.content };
+      }
     });
-    requestData.image = imageBase64;
+    
+    // Build request data
+    const requestData = {
+      message: message,
+      history: formattedHistory
+    };
+    
+    // Add image validation
+    if (imageFile) {
+      const validTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/gif'];
+      const maxSize = 5 * 1024 * 1024; // 5MB
+      
+      if (!validTypes.includes(imageFile.type)) {
+        return {
+          text: "I couldn't process that image. Please upload a JPEG, PNG, or GIF file.",
+          suggestedResponses: ["Try without image", "Which formats work?", "Send a different image"]
+        };
+      }
+      
+      if (imageFile.size > maxSize) {
+        return {
+          text: "That image is too large. Please upload an image smaller than 5MB.",
+          suggestedResponses: ["Try without image", "How to resize images?", "Send a different image"]
+        };
+      }
+      
+      // Convert image to base64
+      const imageBase64 = await new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result);
+        reader.readAsDataURL(imageFile);
+      });
+      requestData.image = imageBase64;
+    }
+    
+    // Make API call
+    const response = await fetch(`${API_BASE_URL}/api/chat`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(requestData)
+    });
+    
+    if (!response.ok) {
+      throw new Error(`API request failed with status ${response.status}`);
+    }
+    
+    return await response.json();
+  } catch (error) {
+    if (error.message.includes("413")) {
+      return {
+        text: "The image you sent is too large. Please try a smaller image (under 5MB).",
+        suggestedResponses: ["Continue without image", "Try a different question"]
+      };
+    } else if (error.message.includes("415")) {
+      return {
+        text: "I can only process JPEG, PNG and GIF images. Please try a different format.",
+        suggestedResponses: ["Continue without image", "Try a different question"]
+      };
+    } else {
+      throw error; // Re-throw other errors to be caught by the calling function
+    }
   }
-  
-  // Make API call
-  const response = await fetch(`${API_BASE_URL}/api/chat`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(requestData)
-  });
-  
-  if (!response.ok) {
-    throw new Error(`API request failed with status ${response.status}`);
-  }
-  
-  const responseData = await response.json();
-  
-  // Ensure we have a properly formatted response even if the server returns fewer suggestions
-  return {
-    text: responseData.text,
-    suggestedResponses: responseData.suggestedResponses || []
-  };
 }
 
 /**
@@ -118,14 +146,22 @@ export async function fetchSuggestedResponses(message, botReply, history = []) {
  */
 export async function checkHealth() {
   try {
+    console.log("Checking API health...");
     const response = await fetch(`${API_BASE_URL}/api/health`);
     
     if (!response.ok) {
+      console.log("API health check failed: non-OK response");
       return false;
     }
     
-    const data = await response.json();
-    return data.status === "healthy";
+    try {
+      const data = await response.json();
+      console.log("API health check response:", data);
+      return data.status === "healthy";
+    } catch (jsonError) {
+      console.error("Error parsing health check JSON:", jsonError);
+      return false;
+    }
   } catch (error) {
     console.error('Health check failed:', error);
     return false;

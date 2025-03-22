@@ -7,7 +7,6 @@ const ChatCard = ({ onSelectPrompt }) => {
         "What should I wear to a gallery opening?",
         "Suggest styling tips for minimalist wardrobe",
         "Tell me about tabi boots",
-        "What are good fabrics for summer?"
     ]);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -16,7 +15,7 @@ const ChatCard = ({ onSelectPrompt }) => {
             try {
                 setIsLoading(true);
                 const data = await fetchStarterPrompts();
-                setPrompts(data);
+                setPrompts(data.slice(0,3));
             } catch (error) {
                 console.error("Error loading chat card prompts:", error);
                 // Default prompts will remain
